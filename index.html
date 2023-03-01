@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+    <link rel="stylesheet" href="./closure.css">
+</head>
+<body>
+    <h1>CLOSURE</h1>
+    <hr>
+    <br>
+    <span>QUESTION 1.</span>&nbsp;
+    <P>Create one function with zero parameter having a console statement.
+    </P>
+    <span>SOLUTION.</span>
+    <pre>function counter(){
+        var counter = 0;
+    
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+    
+        return IncreaseCounter;
+    }
+    
+    var counter = counter();
+    console.log(counter());
+    console.log(counter());
+    console.log(counter());
+    console.log(counter());
+    </pre>
+
+    <span>Output:</span>&nbsp;
+    <pre class="pre1">
+        1
+        2
+        3
+        4
+    </pre><br><br><br><br>
+    <br><br>
+    <hr>
+    <br>
+
+    <span>QUESTION 2.</span>&nbsp;
+    <span>SOLUTION.</span>
+    <pre>let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); 
+        })();
+    </pre>
+
+      <span>Output:</span>&nbsp;
+      <pre class="pre1">
+        1
+        0
+      </pre>
+
+      <br><br><br>
+      <hr>
+      <br>
+
+    <span>QUESTION 3.</span>&nbsp;
+    <span>SOLUTION.</span>
+    <pre>
+      for(var i=0;i < 3;i++){
+           setTimeout(function log(){
+           console.log(i);
+           },1000);
+        }
+      </pre>
+
+      <span>Output:</span>&nbsp;
+      <pre class="pre1">
+        3
+        3
+        3
+      </pre>
+      <br><br> <br><br><br>
+      <hr>
+      <br>
+
+    <span>QUESTION 4.</span>&nbsp;
+    <p>Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</p>
+    <span>SOLUTION.</span>
+    <pre>
+       function outer(length) {
+        function inner(breadth){
+          return length*breadth;
+        }
+        return inner;
+       }
+       const length=5, breadth=10;
+       const area= outer(length)(breadth);
+       console.log(area);
+      
+    </pre>
+      
+      <span>Input:</span>&nbsp;length=5  breadth=10  <br><br>
+      <span>Output:</span>&nbsp;50
+      <br><br>
+      <hr>
+      <br>
+
+    <span>QUESTION 5.</span>&nbsp;
+    <p>Take a variable in outer function and create an inner function to increase the counter every time it is called</p>
+    <span>SOLUTION.</span>
+    <pre>
+      function outer(counter){
+        function inner(){
+          return counter+=1;
+        }
+        return inner;
+      }
+      console.log(outer(7)());
+    </pre>
+
+    <span>Input:</span>&nbsp;7   <br><br>
+    <span>Output:</span>&nbsp;8
+      <br><br>
+      <hr>
+      <br>
+
+
+    <span>QUESTION 6.</span>&nbsp;
+    <p>Print output:</p>
+    <span>SOLUTION.</span>
+    <pre>
+      var a = 12; //self invoking function
+      (function () {
+         console.log(a);
+      })();
+    </pre>
+    <span>Output:</span>&nbsp;12
+      <br><br>
+      <hr>
+      <br>
+
+
+    <span>QUESTION 7.</span>&nbsp;
+    <p>Print output:</p>
+    <span>SOLUTION.</span>
+    <pre>
+      var a = 10;  //first class function
+      var x = (function () {
+        var a = 12;
+        return function () {
+          console.log(a);
+        };
+      })(); 
+      x();
+    </pre>
+
+      <span>Output:</span>&nbsp;12
+      <br><br>
+      <hr>
+      <br>
+
+      <span>QUESTION 8.</span>&nbsp;
+    <p>Print output:</p>
+    <span>SOLUTION.</span>
+    <pre>var globalVar = "xyz";
+
+      (function outerFunc(outerArg) {
+          var outerVar = 'a';
+          
+          (function innerFunc(innerArg) {
+          var innerVar = 'b';
+          
+          console.log(
+              "outerArg = " + outerArg + "\n" +
+              "innerArg = " + innerArg + "\n" +
+              "outerVar = " + outerVar + "\n" +
+              "innerVar = " + innerVar + "\n" +
+              "globalVar = " + globalVar);
+          
+          })(456);
+      })(123);
+    </pre>
+
+      <span>Output:</span>&nbsp;
+      <pre class="pre1">
+        outerArg = 123
+        innerArg = 456
+        outerVar = a
+        innerVar = b
+        globalVar = xyz
+      </pre>
+      <br><br><br><br><br><br>
+      <hr>
+      <br>
+</body>
+</html>
